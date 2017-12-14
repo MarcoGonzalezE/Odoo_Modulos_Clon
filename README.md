@@ -1,1 +1,1 @@
-# Odoo_Modulos_Clon
+Programa para la clonacion de modulos de Odoo a los servidores.
