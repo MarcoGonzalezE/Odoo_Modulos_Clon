@@ -20,11 +20,10 @@ URL6="https://github.com/ivanporras/Odoo_acccount_invoicing.git"
 URL7="https://github.com/ivanporras/Odoo_account_financial.git"
 URL8="https://github.com/ivanporras/Odoo_sales.git"
 URL9="https://github.com/ivanporras/Odoo_purchase.git"
-#URL10=" "
+URL10="https://github.com/ivanporras/Odoo_PLM.git"
 
 echo "Introduzca contraseña de SUDO:"
-read pIngeniero en Computación
-ass
+read pass
 
 #--------Instalacion SSHPASS--------
 #echo " --- Instalando SSHPASS ---"
@@ -144,6 +143,8 @@ git clone $URL9
 cd Odoo_purchase
 cd OCA_Purchase_Workflow
 mv purchase_request_to_procurement $Destino
+mv purchase_location_by_line $Destino
+mv purchase_delivery_split_date $Destino
 cd ..
 mv purchase_history $Destino
 mv purchase_amendment $Destino
@@ -153,7 +154,21 @@ sudo rm -R Odoo_purchase
 
 
 #---------URL 10---------------------
-#git clone $URL10
+git clone $URL10
+cd Odoo_PLM
+mv plm $Destino
+mv plm_auto_internalref $Destino
+mv plm_automate_normal_bom $Destino
+mv plm_compare_bom $Destino
+mv plm_cutted_parts $Destino
+mv plm_date_bom $Destino
+mv plm_engineering $Destino
+mv plm_pack_and_go $Destino
+mv plm_sale_fix $Destino
+mv plm_spare $Destino
+cd ..
+sudo rm -R Odoo_PLM
+
 
 
 echo " --- Clonados y basura eliminada --- "
