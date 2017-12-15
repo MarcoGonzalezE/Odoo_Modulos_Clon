@@ -1,4 +1,10 @@
 #!/bin/bash
+#-----------------------------------------------------------#
+# Script para la clonacion de repositos de Odoo al servidor #
+# y eliminacion de carpetas basura que no se requieran.     #
+# Autor: Marco Antonio González                             #
+#-----------------------------------------------------------#
+
 ##fixed parameters
 OE_USER="administrator"
 PASS="OFBIM"
@@ -8,29 +14,36 @@ Destino="/odoo/custom/addons"
 URL1="https://github.com/ivanporras/Odoo_warehouse_stock_logistic.git"
 URL2="https://github.com/ivanporras/Odoo_MassEditing.git"
 URL3="https://github.com/ivanporras/Odoo_MRP"
-URL4="https://github.com/ivanporras/Odoo_reports.git"
+#URL4="https://github.com/ivanporras/Odoo_reports.git"
 URL5="https://github.com/ivanporras/Odoo_account_payment.git"
 URL6="https://github.com/ivanporras/Odoo_acccount_invoicing.git"
 URL7="https://github.com/ivanporras/Odoo_account_financial.git"
 URL8="https://github.com/ivanporras/Odoo_sales.git"
 URL9="https://github.com/ivanporras/Odoo_purchase.git"
-URL10="https://github.com/ivanporras/Odoo_acccount_invoicing.git"
+#URL10=" "
 
-#----------------------------
-#Instalacion SSHPASS
-echo "\n --- Instalando SSHPASS ---"
-sudo apt-get install sshpass
-clear
+echo "Introduzca contraseña de SUDO:"
+read pIngeniero en Computación
+ass
 
-#-----------------------------
-# Conexion servidor Avicampo
-echo "\n ---Conexion a Servidor AVICAMPOSERVER---"
-sshpass -p $PASS ssh $OE_USER@192.168.10.6
-echo
+#--------Instalacion SSHPASS--------
+#echo " --- Instalando SSHPASS ---"
+#sudo apt-get install sshpass
+#clear
 
-#-----------------------------
-# Clonar repositos Git
-echo "\n --- Clonacion de repositos ---"
+#-----Conexion servidor Avicampo----
+#echo " ---Conexion a Servidor AVICAMPOSERVER---"
+#sshpass -p $PASS ssh $OE_USER@192.168.10.6
+#echo
+
+
+#--------DESTINO---------------------
+cd $Destino
+echo " --- Ingresando a" $Destino
+
+
+#------Clonar repositos Git----------
+echo " --- Clonacion de repositos ---"
 
 
 #----------URL 1-------------------
@@ -41,7 +54,7 @@ cd oca_stock_logistics_workflow
 mv stock_disable_force_availability_button $Destino
 cd ..
 cd ..
-sudo rm -R Odoo_warehouse_stock_logistic 
+echo $pass | sudo -S rm -R Odoo_warehouse_stock_logistic 
 
 
 #----------URL 2-------------------
@@ -65,8 +78,8 @@ sudo rm -R Odoo_MRP
 
 
 #---------URL 4-------------------------
-git clone $URL4
-cd Odoo_reports
+#git clone $URL4
+#cd Odoo_reports
 
 
 #---------URL 5-------------------------
@@ -89,8 +102,9 @@ sudo rm -R Odoo_account_payment
 #---------URL 6---------------------------
 git clone $URL6
 cd Odoo_acccount_invoicing
-cd Odoo_acccount_invoicing
+cd oca_account_invoicing
 mv account_invoice_view_payment $Destino
+mv account_invoice_supplier_ref_unique $Destino
 cd ..
 cd ..
 sudo rm -R Odoo_acccount_invoicing
@@ -139,13 +153,8 @@ sudo rm -R Odoo_purchase
 
 
 #---------URL 10---------------------
-git clone $URL10
-cd Odoo_acccount_invoicing
-cd oca_account_invoicing
-mv account_invoice_supplier_ref_unique $Destino
-cd ..
-cd ..
-sudo rm -R Odoo_acccount_invoicing
+#git clone $URL10
 
-echo "\n--- Clonados y basura eliminada --- "
+
+echo " --- Clonados y basura eliminada --- "
 
