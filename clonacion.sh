@@ -13,7 +13,7 @@ Destino="/odoo/custom/addons"
 
 URL1="https://github.com/ivanporras/Odoo_warehouse_stock_logistic.git"
 URL2="https://github.com/ivanporras/Odoo_MassEditing.git"
-URL3="https://github.com/ivanporras/Odoo_MRP"
+URL3="https://github.com/ivanporras/Odoo_MRP.git"
 
 URL5="https://github.com/ivanporras/Odoo_account_payment.git"
 URL6="https://github.com/ivanporras/Odoo_acccount_invoicing.git"
@@ -21,6 +21,7 @@ URL7="https://github.com/ivanporras/Odoo_account_financial.git"
 URL8="https://github.com/ivanporras/Odoo_sales.git"
 URL9="https://github.com/ivanporras/Odoo_purchase.git"
 URL10="https://github.com/ivanporras/Odoo_PLM.git"
+URL11="https://github.com/ivanporras/Odoo_themes.git"
 
 echo "Introduzca contraseña de SUDO:"
 read sudopass
@@ -179,6 +180,13 @@ sudo rm -R Odoo_PLM
 echo "------------------------------"
 
 
+#---------URL 11--------------------
+git clone $URL11
+cd Odoo_themes
+mv backend_theme $Destino
+cd ..
+sudo rm -R Odoo_themes
+echo "------------------------------"
 
 echo " --- Clonados y basura eliminada --- "
 echo "-------------------------------------"
