@@ -14,7 +14,7 @@ Destino="/odoo/custom/addons"
 URL1="https://github.com/ivanporras/Odoo_warehouse_stock_logistic.git"
 URL2="https://github.com/ivanporras/Odoo_MassEditing.git"
 URL3="https://github.com/ivanporras/Odoo_MRP"
-#URL4="https://github.com/ivanporras/Odoo_reports.git"
+
 URL5="https://github.com/ivanporras/Odoo_account_payment.git"
 URL6="https://github.com/ivanporras/Odoo_acccount_invoicing.git"
 URL7="https://github.com/ivanporras/Odoo_account_financial.git"
@@ -23,7 +23,7 @@ URL9="https://github.com/ivanporras/Odoo_purchase.git"
 URL10="https://github.com/ivanporras/Odoo_PLM.git"
 
 echo "Introduzca contraseña de SUDO:"
-read pass
+read sudopass
 
 #--------Instalacion SSHPASS--------
 #echo " --- Instalando SSHPASS ---"
@@ -33,7 +33,6 @@ read pass
 #-----Conexion servidor Avicampo----
 #echo " ---Conexion a Servidor AVICAMPOSERVER---"
 #sshpass -p $PASS ssh $OE_USER@192.168.10.6
-#echo
 
 
 #--------DESTINO---------------------
@@ -53,7 +52,8 @@ cd oca_stock_logistics_workflow
 mv stock_disable_force_availability_button $Destino
 cd ..
 cd ..
-echo $pass | sudo -S rm -R Odoo_warehouse_stock_logistic 
+echo $sudopass | sudo -S rm -R Odoo_warehouse_stock_logistic 
+echo "------------------------------"
 
 
 #----------URL 2-------------------
@@ -62,6 +62,8 @@ cd Odoo_MassEditing
 mv mass_editing $Destino
 cd ..
 sudo rm -R Odoo_MassEditing
+echo "------------------------------"
+
 
 
 #----------URL 3-------------------
@@ -73,12 +75,11 @@ mv product_quick_bom $Destino
 cd ..
 cd ..
 sudo rm -R Odoo_MRP
+echo "------------------------------"
 
 
 
-#---------URL 4-------------------------
-#git clone $URL4
-#cd Odoo_reports
+
 
 
 #---------URL 5-------------------------
@@ -96,6 +97,8 @@ mv account_payment_return $Destino
 cd ..
 cd ..
 sudo rm -R Odoo_account_payment
+echo "------------------------------"
+
 
 
 #---------URL 6---------------------------
@@ -107,6 +110,8 @@ mv account_invoice_supplier_ref_unique $Destino
 cd ..
 cd ..
 sudo rm -R Odoo_acccount_invoicing
+echo "------------------------------"
+
 
 
 #---------URL 7-------------------------
@@ -117,6 +122,7 @@ mv account_check_deposit $Destino
 cd ..
 cd ..
 sudo rm -R Odoo_account_financial
+echo "------------------------------"
 
 
 #----------URL 8-----------------------
@@ -136,6 +142,7 @@ mv sale_restrict $Destino
 mv sale_customer_credit_limit $Destino
 cd ..
 sudo rm -R Odoo_sales
+echo "------------------------------"
 
 
 #----------URL 9----------------------
@@ -151,6 +158,7 @@ mv purchase_amendment $Destino
 mv acs_product_purchase_history $Destino
 cd ..
 sudo rm -R Odoo_purchase
+echo "------------------------------"
 
 
 #---------URL 10---------------------
@@ -168,8 +176,9 @@ mv plm_sale_fix $Destino
 mv plm_spare $Destino
 cd ..
 sudo rm -R Odoo_PLM
+echo "------------------------------"
 
 
 
 echo " --- Clonados y basura eliminada --- "
-
+echo "-------------------------------------"
